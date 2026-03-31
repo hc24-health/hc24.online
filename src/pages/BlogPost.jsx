@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Heart, MessageSquare, Share2, Twitter, Facebook, Linkedin, Link2, Send, Clock, Tag } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 import Navbar from "../components/landing/Navbar";
 import FooterBar from "../components/landing/FooterBar";
 import ReactMarkdown from "react-markdown";
 import { posts } from "../lib/blogData";
+import { db } from "../lib/firebase";
+import { doc, getDoc, updateDoc, arrayUnion, addDoc, collection, query, orderBy, getDocs, onSnapshot, serverTimestamp } from "firebase/firestore";
 
 function getSessionId() {
   let id = localStorage.getItem("hc24_session");
@@ -19,7 +20,8 @@ function getSessionId() {
 
 export default function BlogPost() {
   const { id } = useParams();
-  const post = posts.find((p) => p.id === id);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -33,32 +35,79 @@ export default function BlogPost() {
   const pageUrl = window.location.href;
 
   useEffect(() => {
+    const loadPost = async () => {
+      try {
+        const docRef = doc(db, 'blogs', id);
+        const docSnap = await getDoc(docRef);
+        let currentPost = null;
+        
+        if (docSnap.exists()) {
+          currentPost = { id: docSnap.id, ...docSnap.data() };
+        } else {
+          currentPost = posts.find((p) => p.id === id);
+        }
+        
+        if (currentPost) {
+          setPost(currentPost);
+          setLikes(currentPost.likes?.length || 0);
+          setLiked(currentPost.likes?.includes(sessionId) || false);
+        }
+      } catch (err) {
+        console.error("Failed to fetch post", err);
+        const fallback = posts.find((p) => p.id === id);
+        if (fallback) setPost(fallback);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPost();
+  }, [id, sessionId]);
+
+  useEffect(() => {
     if (!post) return;
-    // Load likes count
-    base44.entities.BlogLike.filter({ post_id: post.id }).then((data) => {
-      setLikes(data.length);
-      setLiked(data.some((l) => l.session_id === sessionId));
+    const commentsRef = collection(db, 'blogs', post.id, 'comments');
+    const q = query(commentsRef, orderBy('createdAt', 'desc'));
+    
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setComments(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    }, (err) => {
+      console.warn("Failed syncing comments", err);
     });
-    // Load comments
-    base44.entities.BlogComment.filter({ post_id: post.id }, "-created_date").then(setComments);
+    
+    return () => unsubscribe();
   }, [post?.id]);
 
   const handleLike = async () => {
-    if (liked) return;
-    await base44.entities.BlogLike.create({ post_id: post.id, session_id: sessionId });
+    if (liked || !post) return;
     setLikes((l) => l + 1);
     setLiked(true);
+    try {
+      await updateDoc(doc(db, 'blogs', post.id), {
+        likes: arrayUnion(sessionId)
+      });
+    } catch (err) {
+      console.error("Failed to like", err);
+    }
   };
 
   const handleComment = async (e) => {
     e.preventDefault();
+    if (!post) return;
     setSubmitting(true);
-    await base44.entities.BlogComment.create({ ...form, post_id: post.id });
-    setSubmitted(true);
-    setSubmitting(false);
-    setForm({ author_name: "", author_email: "", content: "" });
-    // Refresh comments
-    base44.entities.BlogComment.filter({ post_id: post.id }, "-created_date").then(setComments);
+    try {
+      await addDoc(collection(db, 'blogs', post.id, 'comments'), {
+        ...form,
+        createdAt: serverTimestamp(),
+        // provide a literal ISO date string for sorting fallback
+        created_date: new Date().toISOString() 
+      });
+      setSubmitted(true);
+      setForm({ author_name: "", author_email: "", content: "" });
+    } catch (err) {
+      console.error("Failed to post comment", err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleCopy = () => {
@@ -66,6 +115,18 @@ export default function BlogPost() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  if (loading) {
+    return (
+      <div style={{ fontFamily: "'Outfit', sans-serif" }}>
+        <Navbar />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="w-8 h-8 border-4 border-red-200 border-t-red-600 rounded-full animate-spin mx-auto"></div>
+        </div>
+        <FooterBar />
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -224,7 +285,11 @@ export default function BlogPost() {
                     </div>
                     <div>
                       <p className="font-outfit font-700 text-slate-900 text-sm">{c.author_name}</p>
-                      <p className="font-outfit text-slate-400 text-xs">{new Date(c.created_date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</p>
+                      <p className="font-outfit text-slate-400 text-xs">
+                        {c.created_date 
+                          ? new Date(c.created_date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+                          : c.createdAt?.toDate ? new Date(c.createdAt.toDate()).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : 'Just now'}
+                      </p>
                     </div>
                   </div>
                   <p className="font-outfit text-slate-600 text-sm leading-relaxed">{c.content}</p>

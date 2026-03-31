@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterBar from "../components/landing/FooterBar";
 import { posts } from "../lib/blogData";
+import { db } from "../lib/firebase";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 export default function Blog() {
+  const [postsList, setPostsList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          setPostsList(posts);
+        } else {
+          setPostsList(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        }
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+        setPostsList(posts);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
   return (
     <div style={{ fontFamily: "'Outfit', sans-serif" }}>
       <Navbar />
@@ -23,7 +47,11 @@ export default function Blog() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {posts.map((post, i) => (
+            {loading ? (
+              <div className="col-span-1 sm:col-span-2 text-center py-12">
+                <div className="w-8 h-8 border-4 border-red-200 border-t-red-600 rounded-full animate-spin mx-auto"></div>
+              </div>
+            ) : postsList.map((post, i) => (
               <motion.article key={post.id} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="group border border-slate-100 rounded-3xl overflow-hidden hover:shadow-lg transition-all">
                 <Link to={`/blog/${post.id}`} className="block">
