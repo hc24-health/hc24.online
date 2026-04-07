@@ -9,6 +9,7 @@ export const posts = [
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
     author: "Dr. Amaka Osei",
     authorRole: "Medical Director, HC24",
+    likes: [],
     content: `Getting a full blood panel test once a year might seem like an inconvenience, but it is one of the most powerful things you can do for your long-term health. Many chronic conditions — including diabetes, high cholesterol, anaemia, and liver disease — develop silently over years with no obvious symptoms. By the time you feel something is wrong, the disease may already be in an advanced stage.
 
 **What is a Full Panel Test?**
@@ -43,6 +44,7 @@ With HC24, booking a full panel test takes less than two minutes. A certified ph
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
     author: "HC24 Product Team",
     authorRole: "HC24 Technologies",
+    likes: [],
     content: `We are thrilled to announce one of our most requested features: **AI Doctor Consultations** — an intelligent assistant that helps you understand your lab results, answers follow-up questions, and helps you decide whether you need to see a doctor in person.
 
 **The Problem We're Solving**
@@ -76,6 +78,7 @@ AI Doctor Consultations are available to all HC24 users with the latest app upda
     image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80",
     author: "Dr. Chukwuemeka Nwosu",
     authorRole: "Internal Medicine, HC24 Clinical Panel",
+    likes: [],
     content: `Lagos is one of Africa's most vibrant cities — but its density, climate, and lifestyle create a distinct set of health challenges. If you live in Lagos, here are the conditions most likely to affect you and the tests you should prioritise.
 
 **1. Malaria**
@@ -116,6 +119,7 @@ HC24 offers Lagos-specific health panels designed for our local disease burden. 
     image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
     author: "Dr. Funmilayo Adeyemi",
     authorRole: "Haematologist, HC24 Clinical Panel",
+    likes: [],
     content: `The Complete Blood Count — or CBC — is one of the most requested blood tests in medicine. It gives your doctor a snapshot of your overall health by measuring the different types of cells in your blood. But what do all those numbers actually mean?
 
 **Red Blood Cells (RBC) & Haemoglobin**

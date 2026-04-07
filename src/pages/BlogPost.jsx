@@ -49,8 +49,8 @@ export default function BlogPost() {
         
         if (currentPost) {
           setPost(currentPost);
-          setLikes(currentPost.likes?.length || 0);
-          setLiked(currentPost.likes?.includes(sessionId) || false);
+          setLikes(currentPost['likes']?.length || 0);
+          setLiked(currentPost['likes']?.includes(sessionId) || false);
         }
       } catch (err) {
         console.error("Failed to fetch post", err);
@@ -187,11 +187,39 @@ export default function BlogPost() {
 
           {/* Article body */}
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
-            <ReactMarkdown
-              className="prose prose-slate max-w-none prose-headings:font-outfit prose-headings:font-700 prose-p:font-outfit prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-slate-900 prose-li:font-outfit prose-li:text-slate-600"
-            >
-              {post.content}
-            </ReactMarkdown>
+            <div className="font-outfit text-slate-600 leading-relaxed max-w-none">
+              <ReactMarkdown
+                components={{
+                  h1: ({node, ...props}) => <h1 className="text-3xl md:text-4xl font-700 text-slate-900 mt-12 mb-6 border-b border-slate-100 pb-4" {...props} />,
+                  h2: ({node, ...props}) => <h2 className="text-2xl md:text-3xl font-700 text-slate-900 mt-10 mb-5 border-b border-slate-50 pb-2" {...props} />,
+                  h3: ({node, ...props}) => <h3 className="text-xl md:text-2xl font-700 text-red-600 mt-8 mb-4" {...props} />,
+                  p: ({node, ...props}) => <p className="text-base md:text-lg text-slate-600 mb-6 leading-relaxed" {...props} />,
+                  ul: ({node, ...props}) => <ul className="list-disc list-outside ml-6 mb-6 space-y-2 text-slate-600" {...props} />,
+                  ol: ({node, ...props}) => <ol className="list-decimal list-outside ml-6 mb-6 space-y-2 text-slate-600" {...props} />,
+                  li: ({node, ...props}) => <li className="pl-2" {...props} />,
+                  blockquote: ({node, ...props}) => (
+                    <blockquote className="border-l-4 border-red-500 pl-6 py-2 my-10 italic text-slate-700 bg-red-50/30 rounded-r-xl" {...props} />
+                  ),
+                  code: ({node, className, children, ...props}) => {
+                    const match = /language-(\w+)/.exec(className || '')
+                    return !match ? (
+                      <code className="bg-red-50 text-red-600 px-1.5 py-0.5 rounded font-mono text-sm" {...props}>
+                        {children}
+                      </code>
+                    ) : (
+                      <code className="block bg-slate-900 text-red-400 p-6 rounded-2xl font-mono text-sm my-8 overflow-x-auto border border-slate-800" {...props}>
+                        {children}
+                      </code>
+                    )
+                  },
+                  img: ({node, ...props}) => <img className="w-full rounded-3xl my-10 shadow-2xl shadow-slate-200" alt="blog content" {...props} />,
+                  hr: ({node, ...props}) => <hr className="my-14 border-slate-100" {...props} />,
+                  strong: ({node, ...props}) => <strong className="font-700 text-slate-900" {...props} />,
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
+            </div>
           </motion.div>
 
           {/* Like & Share */}
