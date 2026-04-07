@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart, MessageSquare, Share2, Twitter, Facebook, Linkedin, Link2, Send, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Heart, MessageSquare, Share2, Twitter, Facebook, Linkedin, Instagram, Link2, Send, Clock, Tag } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterBar from "../components/landing/FooterBar";
 import ReactMarkdown from "react-markdown";
@@ -246,6 +246,10 @@ export default function BlogPost() {
                 <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener noreferrer"
                   className="w-9 h-9 bg-slate-100 hover:bg-[#0A66C2] hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all">
                   <Linkedin className="w-4 h-4" />
+                </a>
+                <a href={`https://www.instagram.com/`} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 bg-slate-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all">
+                  <Instagram className="w-4 h-4" />
                 </a>
                 <button onClick={handleCopy}
                   className="w-9 h-9 bg-slate-100 hover:bg-slate-800 hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all">
