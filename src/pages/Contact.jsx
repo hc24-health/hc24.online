@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, MessageSquare, Send } from "lucide-react";
+import { Mail, MapPin, MessageSquare, Send, Instagram, Facebook, Linkedin } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterBar from "../components/landing/FooterBar";
 
@@ -10,7 +10,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailto = `mailto:hello@hc24.app?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
+    const mailto = `mailto:hi@hc24.online?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
     window.location.href = mailto;
     setSent(true);
   };
@@ -34,8 +34,8 @@ export default function Contact() {
             <h2 className="font-outfit font-700 text-slate-900 text-2xl mb-6">Get in touch</h2>
             <div className="space-y-5">
               {[
-                { icon: Mail, label: "Email", value: "hello@hc24.app", href: "mailto:hello@hc24.app" },
-                { icon: MessageSquare, label: "Support", value: "support@hc24.app", href: "mailto:support@hc24.app" },
+                { icon: Mail, label: "Email", value: "hi@hc24.online", href: "mailto:hi@hc24.online" },
+                { icon: MessageSquare, label: "Support", value: "support@hc24.online", href: "mailto:support@hc24.online" },
                 { icon: MapPin, label: "Location", value: "Lagos, Nigeria", href: null },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4 bg-slate-50 rounded-2xl p-5">
@@ -58,6 +58,24 @@ export default function Contact() {
               <p className="text-red-400 font-outfit font-medium text-xs tracking-widest uppercase mb-2">Availability</p>
               <p className="text-white font-outfit font-700 text-lg">Currently serving Lagos, Nigeria</p>
               <p className="text-slate-400 font-outfit text-sm mt-1">Expanding to more cities soon. Download the app to join the waitlist.</p>
+            </div>
+
+            <div className="mt-8 bg-slate-50 border border-slate-100 rounded-2xl p-6">
+              <h3 className="font-outfit font-700 text-slate-900 text-lg mb-4">Connect with us</h3>
+              <div className="flex gap-3">
+                <a href="https://www.instagram.com/hc24medic/" target="_blank" rel="noopener noreferrer" 
+                  className="w-11 h-11 bg-white border border-slate-200 hover:border-red-200 hover:bg-red-50 hover:text-[#E1306C] text-slate-600 rounded-xl flex items-center justify-center transition-all">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="https://www.facebook.com/HC24" target="_blank" rel="noopener noreferrer" 
+                  className="w-11 h-11 bg-white border border-slate-200 hover:border-red-200 hover:bg-red-50 hover:text-[#0A66C2] text-slate-600 rounded-xl flex items-center justify-center transition-all">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="https://www.linkedin.com/company/checkez/" target="_blank" rel="noopener noreferrer" 
+                  className="w-11 h-11 bg-white border border-slate-200 hover:border-red-200 hover:bg-red-50 hover:text-[#0A66C2] text-slate-600 rounded-xl flex items-center justify-center transition-all">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
 
