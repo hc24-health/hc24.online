@@ -55,7 +55,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://apps.apple.com"
+            href="https://apps.apple.com/us/app/hc24/id6761201250"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center gap-2 text-sm font-outfit font-medium border px-4 py-2 rounded-xl transition-all duration-200 ${
@@ -91,7 +91,7 @@ export default function Navbar() {
             </a>
           ))}
           <div className="flex flex-col gap-2 mt-2">
-            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="block text-center bg-slate-900 text-white px-4 py-2.5 rounded-xl text-sm font-outfit font-medium">Download on App Store</a>
+            <a href="https://apps.apple.com/us/app/hc24/id6761201250" target="_blank" rel="noopener noreferrer" className="block text-center bg-slate-900 text-white px-4 py-2.5 rounded-xl text-sm font-outfit font-medium">Download on App Store</a>
             <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" className="block text-center bg-red-600 text-white px-4 py-2.5 rounded-xl text-sm font-outfit font-medium">Get on Google Play</a>
           </div>
         </motion.div>

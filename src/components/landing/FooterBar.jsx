@@ -65,7 +65,7 @@ export default function FooterBar() {
                 { label: "Services", href: "/#services" },
                 { label: "How It Works", href: "/#how-it-works" },
                 { label: "Our Approach", href: "/#team" },
-                { label: "App Store", href: "https://apps.apple.com" },
+                { label: "App Store", href: "https://apps.apple.com/us/app/hc24/id6761201250" },
                 { label: "Google Play", href: "https://play.google.com" },
               ].map((l) => (
                 <li key={l.label}>

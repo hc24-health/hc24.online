@@ -28,7 +28,7 @@ export default function ServicesSection() {
               200+ tests available,<br />
               <span className="text-slate-400">all in the HC24 app</span>
             </h2>
-            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="self-start md:self-auto inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-outfit font-medium text-sm transition-all duration-200">
+            <a href="https://apps.apple.com/us/app/hc24/id6761201250" target="_blank" rel="noopener noreferrer" className="self-start md:self-auto inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-outfit font-medium text-sm transition-all duration-200">
               Get the app <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

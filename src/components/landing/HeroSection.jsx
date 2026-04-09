@@ -82,7 +82,7 @@ export default function HeroSection({ heroImage }) {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="https://apps.apple.com"
+                href="https://apps.apple.com/us/app/hc24/id6761201250"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 bg-white text-slate-900 px-7 py-4 rounded-xl font-outfit font-600 text-base transition-all duration-200 shadow-xl"
