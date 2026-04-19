@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, MessageSquare, Send, Instagram, Facebook, Linkedin } from "lucide-react";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -16,13 +14,12 @@ export default function Contact() {
   };
 
   return (
-    <div style={{ fontFamily: "'Outfit', sans-serif" }}>
-      <Navbar />
+    <>
       <section className="pt-36 pb-20 bg-slate-950 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[120px]" />
         <div className="max-w-3xl mx-auto px-6 md:px-10 relative z-10 text-center">
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 font-outfit font-medium text-sm tracking-widest uppercase mb-4">Contact</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-5xl md:text-6xl text-white leading-tight mb-6">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-red-400  font-medium text-sm tracking-widest uppercase mb-4">Contact</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-5xl md:text-6xl text-white leading-tight mb-6">
             We'd love to <span className="text-red-400">hear from you</span>
           </motion.h1>
         </div>
@@ -31,7 +28,7 @@ export default function Contact() {
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="font-outfit font-700 text-slate-900 text-2xl mb-6">Get in touch</h2>
+            <h2 className=" font-700 text-slate-900 text-2xl mb-6">Get in touch</h2>
             <div className="space-y-5">
               {[
                 { icon: Mail, label: "Email", value: "hi@hc24.online", href: "mailto:hi@hc24.online" },
@@ -43,11 +40,11 @@ export default function Contact() {
                     <item.icon className="w-5 h-5 text-red-600" />
                   </div>
                   <div>
-                    <p className="font-outfit font-600 text-slate-700 text-sm">{item.label}</p>
+                    <p className=" font-600 text-slate-700 text-sm">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="font-outfit text-slate-500 text-sm hover:text-red-600 transition-colors">{item.value}</a>
+                      <a href={item.href} className=" text-slate-500 text-sm hover:text-red-600 transition-colors">{item.value}</a>
                     ) : (
-                      <p className="font-outfit text-slate-500 text-sm">{item.value}</p>
+                      <p className=" text-slate-500 text-sm">{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -55,13 +52,13 @@ export default function Contact() {
             </div>
 
             <div className="mt-8 bg-slate-950 rounded-2xl p-6">
-              <p className="text-red-400 font-outfit font-medium text-xs tracking-widest uppercase mb-2">Availability</p>
-              <p className="text-white font-outfit font-700 text-lg">Currently serving Lagos, Nigeria</p>
-              <p className="text-slate-400 font-outfit text-sm mt-1">Expanding to more cities soon. Download the app to join the waitlist.</p>
+              <p className="text-red-400  font-medium text-xs tracking-widest uppercase mb-2">Availability</p>
+              <p className="text-white  font-700 text-lg">Currently serving Lagos, Nigeria</p>
+              <p className="text-slate-400  text-sm mt-1">Expanding to more cities soon. Download the app to join the waitlist.</p>
             </div>
 
             <div className="mt-8 bg-slate-50 border border-slate-100 rounded-2xl p-6">
-              <h3 className="font-outfit font-700 text-slate-900 text-lg mb-4">Connect with us</h3>
+              <h3 className=" font-700 text-slate-900 text-lg mb-4">Connect with us</h3>
               <div className="flex gap-3">
                 <a href="https://www.instagram.com/hc24medic/" target="_blank" rel="noopener noreferrer" 
                   className="w-11 h-11 bg-white border border-slate-200 hover:border-red-200 hover:bg-red-50 hover:text-[#E1306C] text-slate-600 rounded-xl flex items-center justify-center transition-all">
@@ -86,8 +83,8 @@ export default function Contact() {
                   <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Send className="w-7 h-7 text-green-600" />
                   </div>
-                  <p className="font-outfit font-700 text-slate-900 text-xl mb-2">Message sent!</p>
-                  <p className="font-outfit text-slate-500 text-sm">We'll get back to you within 1-2 business days.</p>
+                  <p className=" font-700 text-slate-900 text-xl mb-2">Message sent!</p>
+                  <p className=" text-slate-500 text-sm">We'll get back to you within 1-2 business days.</p>
                 </div>
               </div>
             ) : (
@@ -98,29 +95,29 @@ export default function Contact() {
                   { label: "Subject", key: "subject", type: "text", placeholder: "I have a question about..." },
                 ].map((f) => (
                   <div key={f.key}>
-                    <label className="block font-outfit font-medium text-slate-700 text-sm mb-1">{f.label}</label>
+                    <label className="block  font-medium text-slate-700 text-sm mb-1">{f.label}</label>
                     <input
                       type={f.type}
                       placeholder={f.placeholder}
                       value={form[f.key]}
                       onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
                       required
-                      className="w-full border border-slate-200 rounded-xl px-4 py-3 font-outfit text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-400"
+                      className="w-full border border-slate-200 rounded-xl px-4 py-3  text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-400"
                     />
                   </div>
                 ))}
                 <div>
-                  <label className="block font-outfit font-medium text-slate-700 text-sm mb-1">Message</label>
+                  <label className="block  font-medium text-slate-700 text-sm mb-1">Message</label>
                   <textarea
                     rows={5}
                     placeholder="Tell us how we can help..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 font-outfit text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-400 resize-none"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3  text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-400 resize-none"
                   />
                 </div>
-                <button type="submit" className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl font-outfit font-600 text-sm transition-all">
+                <button type="submit" className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl  font-600 text-sm transition-all">
                   Send Message <Send className="w-4 h-4" />
                 </button>
               </form>
@@ -128,7 +125,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <FooterBar />
-    </div>
+    </>
   );
 }

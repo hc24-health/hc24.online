@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
+
+
 import { Lock } from "lucide-react";
 
 const sections = [
@@ -57,15 +57,15 @@ const sections = [
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white font-outfit">
-      <Navbar />
+    <div className="min-h-screen bg-white ">
+      
       <div className="pt-28 pb-20">
         <div className="bg-slate-950 py-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 text-red-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
               <Lock className="w-3 h-3" /> Legal Document
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-4xl md:text-5xl text-white mb-4">Privacy Policy</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-4xl md:text-5xl text-white mb-4">Privacy Policy</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-slate-400 text-sm">Last updated: March 24, 2026 · Effective: March 24, 2026</motion.p>
           </div>
         </div>
@@ -77,13 +77,13 @@ export default function PrivacyPolicy() {
 
           {sections.map((s, i) => (
             <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
-              <h2 className="font-outfit font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
+              <h2 className=" font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
               <p className="text-slate-600 text-sm leading-relaxed">{s.content}</p>
             </motion.div>
           ))}
         </div>
       </div>
-      <FooterBar />
+      
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
+
+
 import { ShieldCheck, Server, Eye, Key, AlertTriangle, Globe } from "lucide-react";
 
 const pillars = [
@@ -25,8 +25,8 @@ const rights = [
 
 export default function DataProtection() {
   return (
-    <div className="min-h-screen bg-white font-outfit">
-      <Navbar />
+    <div className="min-h-screen bg-white ">
+      
       <div className="pt-28 pb-20">
         {/* Hero */}
         <div className="bg-slate-950 py-16 px-6">
@@ -34,7 +34,7 @@ export default function DataProtection() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 text-red-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
               <ShieldCheck className="w-3 h-3" /> Data Protection
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-4xl md:text-5xl text-white mb-4">Data Protection</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-4xl md:text-5xl text-white mb-4">Data Protection</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">How we safeguard your sensitive health data with enterprise-grade security and full regulatory compliance.</motion.p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function DataProtection() {
         <div className="max-w-4xl mx-auto px-6 md:px-10 mt-16 space-y-16">
           {/* Security pillars */}
           <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-outfit font-700 text-2xl text-slate-900 mb-8">Security Infrastructure</h2>
+            <h2 className=" font-700 text-2xl text-slate-900 mb-8">Security Infrastructure</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {pillars.map((p, i) => (
                 <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
@@ -50,8 +50,8 @@ export default function DataProtection() {
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${p.color}`}>
                     <p.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-outfit font-700 text-slate-900 text-sm mb-1">{p.title}</h3>
-                  <p className="font-outfit text-slate-500 text-xs leading-relaxed">{p.desc}</p>
+                  <h3 className=" font-700 text-slate-900 text-sm mb-1">{p.title}</h3>
+                  <p className=" text-slate-500 text-xs leading-relaxed">{p.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -59,7 +59,7 @@ export default function DataProtection() {
 
           {/* Data lifecycle */}
           <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-outfit font-700 text-2xl text-slate-900 mb-6">Data Lifecycle</h2>
+            <h2 className=" font-700 text-2xl text-slate-900 mb-6">Data Lifecycle</h2>
             <div className="bg-slate-950 rounded-3xl p-8 text-white space-y-5">
               {[
                 { stage: "Collection", detail: "Minimum data necessary is collected. You are informed of purpose at the point of collection." },
@@ -70,10 +70,10 @@ export default function DataProtection() {
               ].map((item, i) => (
                 <motion.div key={item.stage} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="flex gap-4 items-start">
-                  <div className="w-6 h-6 rounded-full bg-red-600/20 border border-red-600/30 text-red-400 font-outfit font-700 text-xs flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</div>
+                  <div className="w-6 h-6 rounded-full bg-red-600/20 border border-red-600/30 text-red-400  font-700 text-xs flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</div>
                   <div>
-                    <p className="font-outfit font-700 text-white text-sm">{item.stage}</p>
-                    <p className="font-outfit text-slate-400 text-xs leading-relaxed">{item.detail}</p>
+                    <p className=" font-700 text-white text-sm">{item.stage}</p>
+                    <p className=" text-slate-400 text-xs leading-relaxed">{item.detail}</p>
                   </div>
                 </motion.div>
               ))}
@@ -82,13 +82,13 @@ export default function DataProtection() {
 
           {/* Your rights */}
           <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-outfit font-700 text-2xl text-slate-900 mb-6">Your Data Rights (NDPA 2023)</h2>
+            <h2 className=" font-700 text-2xl text-slate-900 mb-6">Your Data Rights (NDPA 2023)</h2>
             <div className="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">
               {rights.map((r, i) => (
                 <motion.div key={r.right} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
                   className="flex flex-col sm:flex-row sm:items-center gap-2 px-6 py-4 hover:bg-slate-50 transition-colors">
-                  <span className="font-outfit font-700 text-slate-900 text-sm w-48 flex-shrink-0">{r.right}</span>
-                  <span className="font-outfit text-slate-500 text-xs leading-relaxed">{r.detail}</span>
+                  <span className=" font-700 text-slate-900 text-sm w-48 flex-shrink-0">{r.right}</span>
+                  <span className=" text-slate-500 text-xs leading-relaxed">{r.detail}</span>
                 </motion.div>
               ))}
             </div>
@@ -98,15 +98,15 @@ export default function DataProtection() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="bg-red-50 border border-red-100 rounded-3xl p-8 text-center">
             <ShieldCheck className="w-10 h-10 text-red-600 mx-auto mb-4" />
-            <h3 className="font-outfit font-700 text-slate-900 text-lg mb-2">Contact Our Data Protection Officer</h3>
-            <p className="font-outfit text-slate-500 text-sm mb-4">For data requests, complaints, or questions about how we handle your information.</p>
-            <a href="mailto:dpo@hc24.app" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-outfit font-600 text-sm transition-colors">
+            <h3 className=" font-700 text-slate-900 text-lg mb-2">Contact Our Data Protection Officer</h3>
+            <p className=" text-slate-500 text-sm mb-4">For data requests, complaints, or questions about how we handle your information.</p>
+            <a href="mailto:dpo@hc24.app" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl  font-600 text-sm transition-colors">
               Email dpo@hc24.app
             </a>
           </motion.div>
         </div>
       </div>
-      <FooterBar />
+      
     </div>
   );
 }

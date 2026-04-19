@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
+
+
 import { AlertTriangle } from "lucide-react";
 
 const sections = [
@@ -15,15 +15,15 @@ const sections = [
 
 export default function Disclaimer() {
   return (
-    <div className="min-h-screen bg-white font-outfit">
-      <Navbar />
+    <div className="min-h-screen bg-white ">
+      
       <div className="pt-28 pb-20">
         <div className="bg-amber-950 py-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
               <AlertTriangle className="w-3 h-3" /> Medical Disclaimer
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-4xl md:text-5xl text-white mb-4">Disclaimer</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-4xl md:text-5xl text-white mb-4">Disclaimer</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-amber-200/60 text-sm">Last updated: March 24, 2026</motion.p>
           </div>
         </div>
@@ -32,20 +32,20 @@ export default function Disclaimer() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-4">
             <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <p className="text-amber-800 text-sm leading-relaxed font-outfit">
+            <p className="text-amber-800 text-sm leading-relaxed ">
               <strong>Important:</strong> HC24 provides diagnostic support — not medical treatment. In any emergency, contact emergency services immediately.
             </p>
           </motion.div>
 
           {sections.map((s, i) => (
             <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}>
-              <h2 className="font-outfit font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
+              <h2 className=" font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
               <p className="text-slate-600 text-sm leading-relaxed">{s.content}</p>
             </motion.div>
           ))}
         </div>
       </div>
-      <FooterBar />
+      
     </div>
   );
 }

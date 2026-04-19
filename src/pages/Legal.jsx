@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
 import { FileText, Lock, ShieldCheck, Scale, Cookie, HelpCircle, ArrowRight } from "lucide-react";
 
 const legalDocs = [
@@ -58,8 +56,7 @@ const legalDocs = [
 
 export default function Legal() {
   return (
-    <div className="min-h-screen bg-white font-outfit">
-      <Navbar />
+    <div className="min-h-screen bg-white">
       <div className="pt-28 pb-20">
         {/* Hero */}
         <div className="bg-slate-950 py-20 px-6">
@@ -67,7 +64,7 @@ export default function Legal() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 text-red-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
               <Scale className="w-3 h-3" /> Legal & Compliance
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-4xl md:text-5xl text-white mb-5">Legal Centre</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-4xl md:text-5xl text-white mb-5">Legal Centre</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-slate-400 text-base max-w-lg mx-auto leading-relaxed">
               Transparency is core to our values. Find all our legal documents, policies, and compliance information in one place.
             </motion.p>
@@ -83,10 +80,10 @@ export default function Legal() {
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${doc.color}`}>
                     <doc.icon className="w-6 h-6" />
                   </div>
-                  <h2 className="font-outfit font-700 text-slate-900 text-base mb-2">{doc.title}</h2>
-                  <p className="font-outfit text-slate-500 text-sm leading-relaxed flex-1">{doc.desc}</p>
+                  <h2 className=" font-700 text-slate-900 text-base mb-2">{doc.title}</h2>
+                  <p className=" text-slate-500 text-sm leading-relaxed flex-1">{doc.desc}</p>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
-                    <span className="font-outfit text-slate-400 text-xs">Updated {doc.updated}</span>
+                    <span className=" text-slate-400 text-xs">Updated {doc.updated}</span>
                     <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all" />
                   </div>
                 </Link>
@@ -98,22 +95,21 @@ export default function Legal() {
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
             className="mt-16 bg-slate-950 rounded-3xl p-10 text-center">
             <Scale className="w-10 h-10 text-red-400 mx-auto mb-4" />
-            <h3 className="font-outfit font-700 text-white text-xl mb-3">Legal Enquiries</h3>
-            <p className="font-outfit text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+            <h3 className=" font-700 text-white text-xl mb-3">Legal Enquiries</h3>
+            <p className=" text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
               For legal correspondence, partnership agreements, or compliance enquiries, contact our legal team directly.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="mailto:legal@hc24.app" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-outfit font-600 text-sm transition-colors">
+              <a href="mailto:legal@hc24.app" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl  font-600 text-sm transition-colors">
                 legal@hc24.app
               </a>
-              <a href="mailto:dpo@hc24.app" className="bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-outfit font-600 text-sm transition-colors border border-white/10">
+              <a href="mailto:dpo@hc24.app" className="bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl  font-600 text-sm transition-colors border border-white/10">
                 dpo@hc24.app (DPO)
               </a>
             </div>
           </motion.div>
         </div>
       </div>
-      <FooterBar />
     </div>
   );
 }

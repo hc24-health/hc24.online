@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/landing/Navbar";
-import FooterBar from "../components/landing/FooterBar";
+
+
 import { Scale, XCircle, CheckCircle } from "lucide-react";
 
 const prohibited = [
@@ -27,15 +27,15 @@ const permitted = [
 
 export default function AcceptableUse() {
   return (
-    <div className="min-h-screen bg-white font-outfit">
-      <Navbar />
+    <div className="min-h-screen bg-white ">
+      
       <div className="pt-28 pb-20">
         <div className="bg-slate-950 py-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 text-red-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
               <Scale className="w-3 h-3" /> Platform Policy
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-outfit font-800 text-4xl md:text-5xl text-white mb-4">Acceptable Use Policy</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className=" font-800 text-4xl md:text-5xl text-white mb-4">Acceptable Use Policy</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-slate-400 text-sm">Last updated: March 24, 2026</motion.p>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function AcceptableUse() {
           </motion.p>
 
           <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-outfit font-700 text-slate-900 text-xl mb-5 flex items-center gap-2">
+            <h2 className=" font-700 text-slate-900 text-xl mb-5 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-emerald-600" /> Permitted Use
             </h2>
             <div className="space-y-3">
@@ -61,7 +61,7 @@ export default function AcceptableUse() {
           </motion.section>
 
           <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-outfit font-700 text-slate-900 text-xl mb-5 flex items-center gap-2">
+            <h2 className=" font-700 text-slate-900 text-xl mb-5 flex items-center gap-2">
               <XCircle className="w-5 h-5 text-red-600" /> Prohibited Activities
             </h2>
             <div className="space-y-3">
@@ -80,13 +80,13 @@ export default function AcceptableUse() {
             { title: "Reporting Violations", content: "If you become aware of any misuse of the Platform, please report it to abuse@hc24.app. We take all reports seriously and will investigate promptly." },
           ].map((s) => (
             <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="font-outfit font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
+              <h2 className=" font-700 text-slate-900 text-lg mb-3">{s.title}</h2>
               <p className="text-slate-600 text-sm leading-relaxed">{s.content}</p>
             </motion.div>
           ))}
         </div>
       </div>
-      <FooterBar />
+      
     </div>
   );
 }

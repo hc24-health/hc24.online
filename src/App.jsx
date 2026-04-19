@@ -19,6 +19,7 @@ import CookiePolicy from './pages/CookiePolicy';
 import Disclaimer from './pages/Disclaimer';
 import AcceptableUse from './pages/AcceptableUse';
 import BlogPost from './pages/BlogPost';
+import MainLayout from './components/layout/MainLayout';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -43,24 +44,26 @@ const AuthenticatedApp = () => {
     }
   }
 
-  // Render the main app
+  // Render the main app with layout
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/careers" element={<Careers />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/partners" element={<Partners />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/legal" element={<Legal />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="/data-protection" element={<DataProtection />} />
-      <Route path="/cookies" element={<CookiePolicy />} />
-      <Route path="/disclaimer" element={<Disclaimer />} />
-      <Route path="/acceptable-use" element={<AcceptableUse />} />
-      <Route path="/blog/:id" element={<BlogPost />} />
-      <Route path="*" element={<PageNotFound />} />
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/legal" element={<Legal />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/data-protection" element={<DataProtection />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/acceptable-use" element={<AcceptableUse />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
     </Routes>
   );
 };
