@@ -11,11 +11,11 @@ const sections = [
   },
   {
     title: "2. Information We Collect",
-    content: `We collect: (a) Identity data — full name, date of birth, gender, government ID; (b) Contact data — email address, phone number, home address; (c) Health data — test orders, sample types, diagnostic results, medical history you voluntarily provide; (d) Device data — IP address, device type, OS, app version; (e) Usage data — pages visited, features used, session duration; (f) Payment data — processed securely by our payment partners; we do not store card details.`,
+    content: `We collect: (a) Identity data — full name, date of birth, gender, government ID; (b) Contact data — email address, phone number, home address; (c) Health data — test orders, sample types, diagnostic results, medical history you voluntarily provide; (d) Device & Location data — IP address, device type, OS, app version, explicit foreground and background GPS coordinates (strictly for logistics and emergency technical dispatch); (e) Usage data — pages visited, features used, session duration; (f) Payment data — processed securely by our payment partners; we do not store card details.`,
   },
   {
     title: "3. How We Use Your Information",
-    content: `Your information is used to: provide and improve our diagnostic services; deliver results to you and your designated physician; process payments; communicate service updates; comply with legal obligations; conduct anonymised research to improve our AI models (no personally identifiable information is used in model training without explicit consent); send you health tips and service notifications (opt-out available at any time).`,
+    content: `Your information is used to: provide and improve our diagnostic services; dispatch and track emergency medical logistics in real-time (using background location coordinates); deliver results to you and your designated physician; process payments; communicate service updates; comply with legal obligations; conduct anonymised research to improve our AI models (no personally identifiable information is used in model training without explicit consent); send you health tips and service notifications (opt-out available at any time).`,
   },
   {
     title: "4. Legal Basis for Processing",
